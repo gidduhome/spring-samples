@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.clearminds</groupId>
+    <artifactId>springboot</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  <!-- 
+	spring-boot-starter-parent provides no dependencies by itself. 
+  -->   
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.3.3.RELEASE</version>
+    </parent>
+
+    <!-- Additional lines to be added here... 
+    Adding the spring-boot-starter-web dependency just below the parent section to load all 
+    needed dependencies by spring-boot
+    -->
+	<dependencies>
+	   <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-core</artifactId>
+        <version>4.2.6.RELEASE</version>
+        <exclusions>
+          <exclusion>
+            <artifactId>commons-logging</artifactId>
+            <groupId>commons-logging</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      
+    	
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-web</artifactId>
+	    </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
+	<!-- 
+	1. Java does not provide any standard way to load nested jar files
+	 (i.e. jar files that are themselves contained within a jar). 
+	 This can be problematic if you are looking to distribute a self-contained application.
+	
+	2. To solve this problem, many developers use “uber” jars.
+	   An uber jar simply packages all classes, from all jars, into a single archive. 
+	   The problem with this approach is that it becomes hard to see which libraries you are 
+	   actually using in your application. It can also be problematic if the same filename is
+	    used (but with different content) in multiple jars.
+	    
+	3. Spring Boot takes a different approach and allows you to actually nest jars directly.
+	To create an executable jar we need to add the spring-boot-maven-plugin to our pom.xml. 
+	 
+	 The spring-boot-starter-parent POM includes <executions> configuration to bind the
+	 repackage goal. If you are not using the parent POM you will need to declare this 
+	 configuration yourself. 	 
+	 -->
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	        </plugin>
+	    </plugins>
+	</build>
+</project>

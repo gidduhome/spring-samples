@@ -39,4 +39,4 @@ spring:
            native:
 #              searchLocations: file://folder_name/confsvr/src/main/resources/config/customerservice,
 #                               file://folder_name/confsvr/src/main/resources/config/accountservice
-              searchLocations: classpath:config/,classpath:config/customerservice
+              searchLocations: classpath:config/,classpath:config/customerservice,classpath:config/authenticationservice
